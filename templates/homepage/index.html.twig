@@ -1,1 +1,21 @@
-<h1>Hello, from Twig!</h1>
+{# extends : la page enfant hérite d'un page parent : base.html.twig (obligatoire de créer le code dans un bloc de la page parent #}
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>Hello, from Twig!</h1>
+    <hr>
+    {#
+        Commentaire Twig
+        ----------------
+        Pour afficher une info en Twig : {{ <variable à afficher> }}
+        {%  %} : exécuter des éléménts : if, for, etc. (les instructions du langage)
+
+        Mise en page, 3 instructions principales :
+            - extends
+            - block
+            - include (insclusion d'un fichier Twig)
+
+        les pages parents sont situés à la racine du dossier templates
+        les pages enfants dans un sous-dossier du dossier templates
+    #}
+    <p>L'hôte est {{ myHost }}</p>
+{% endblock %}
