@@ -3,7 +3,62 @@
 {% block nav %}{% include '_inc/nav.html.twig' %}{% endblock %}
 {% block main %}
     <h1>main</h1>
+    <hr>
+    {# affichage d'une date #}
+    <p><time>{{ today | date('l M Y H:i:s')}}</time></p>
+    {# formatter un chiffre #}
+    <p>CAC40 : {{ cac40_today | number_format(2, '.') }}</p>
+    {# contactener : ~ #}
+    <p>{{ 'CAC40 : ' ~ cac40_today | number_format(2,',',' ') }}</p>
+    <p>{{ 'TSLA (Rounded): ' ~ tsla | number_format(2,',',' ') | round ~ ' US $' }}</p>
+    <p>{{ 'tsla ' | upper ~ tsla | number_format(2,',') ~ ' US $' }}</p>
+    <p>{{ 'elon' | capitalize }}</p>
+    <p>
+        <img src="{{ asset('img/tesla_logo.jpg') }}" alt="Tesla Logo" class="img-fluid">
+    </p>
 {% endblock %}
 {% block aside %}
     <h1>aside</h1>
+    <hr>
+    {#
+        boucle foreach
+        php : foreach($array as $key => $value)
+            foreach($array as $value)
+        boucle for
+    #}
+    <p>Links</p>
+    <ul>
+        {% for key,value in my_list  %}
+            <li>{{ key }} - {{ value }}</li>
+        {% endfor %}
+    </ul>
+    <p>Scores</p>
+    <ul>
+        {# for i #}
+        {% for i in 0..10 %}
+            <li>No. <mark>{{ i }}</mark></li>
+        {% endfor %}
+    </ul>
+    <p>dump()</p>
+    {{ dump(my_list) }}
+    <p>Our Partners</p>
+    {# set: créer un variable #}
+    {% set weather = "sunny" %}
+    {% if weather is same as("sunny") %} {# OR weather == rain #}
+        <a href="https://twig.symfony.com">Symfony - Twig</a>
+    {% endif %}
+    {# condition if / else /elseif #}
+    {% if weather == "rain" %}
+        <p>☂️</p>
+    {% elseif weather == "sunny" %}
+        <p>☀️</p>
+    {% else %}
+        <p>❄️</p>
+    {% endif %}
+{% endblock %}
+{% block footer %}
+    <h1>footer</h1>
+    {# lien vers la page d'accueil #}
+    <a href="{{ url('homepage.index') }}">Acceuil</a> {# on met le "name" de la fonction de @Route #}
+    | <a href="{{ url('homepage.hello',{name:'dan', age: 29}) }}">Profile</a> {# avec arguments #}
 {% endblock %}

@@ -62,7 +62,7 @@ class HomepageController extends AbstractController
      */
 
     /**
-     * @Route("/hello/{name}-{age}",name="homepage.hello")
+     * @Route("/hello/{name}/{age}",name="homepage.hello")
      */
     public function hello(string $name, int $age):\Symfony\Component\HttpFoundation\Response
     {

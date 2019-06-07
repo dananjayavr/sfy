@@ -1,0 +1,18 @@
+{% extends 'layout.html.twig' %}
+{% block nav %}{% include '_inc/nav.html.twig' %}{% endblock %}
+{% block main %}
+    <h2>Your Friends</h2>
+    <br>
+    {% for friend in friends  %}
+        <a href="{{ url('friends.detail',{'id':friend['id']}) }}"><p>{{ friend['prenom'] }} {{ friend['nom'] }}</p></a>
+        <p>{{ friend['email'] }}</p>
+        <img src="{{ friend['photo'] }}" alt="friend_profile">
+        <hr>
+    {% endfor %}
+{% endblock %}
+{% block aside %}
+    <h2>Favourite Books</h2>
+{% endblock %}
+{% block footer %}
+    <a href="{{ url('friends.index') }}" class="text-center">Back to Top</a>
+{% endblock %}

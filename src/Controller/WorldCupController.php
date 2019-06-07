@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class WorldCupController extends AbstractController
 {
     /**
-     * @Route("/worldcup/winner",name="index")
+     * @Route("/worldcup/winner",name="worldcup.index")
      */
     public function index():Response
     {
@@ -20,7 +20,7 @@ class WorldCupController extends AbstractController
     }
 
     /**
-     * @Route("/worldcup/winner/{country}/{year}",name="history")
+     * @Route("/worldcup/winner/{country}/{year}",name="worldcup.history")
      */
     public function history(string $country, int $year):Response
     {
