@@ -1,8 +1,8 @@
 {% extends 'layout.html.twig' %}
 {% block main %}
-    <p>{{ friend['prenom'] }} {{ friend['nom'] }}</p>
-    <p>{{ friend['email'] }}</p>
-    <img src="{{ friend['photo'] }}" alt="friend_profile">
+    <p>{{ friend.prenom}} {{ friend.nom }}</p>
+    <p>{{ friend.email }}</p>
+    <img src="{{ friend.photo }}" alt="friend_profile">
     <br>
     <a href="{{ url('friends.index') }}">Retour</a>
 {% endblock %}
