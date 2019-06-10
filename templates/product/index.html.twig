@@ -1,0 +1,31 @@
+{% extends 'layout.html.twig' %}
+{% block title %}Our Products - Tesla{% endblock %}
+{% block nav %}{% include '_inc/nav.html.twig' %}{% endblock %}
+{% block main %}
+    <h2>Acceuil</h2>
+    <hr>
+    <div class="row">
+        {% for product in products %}
+            <div class="col-sm-4">
+                <img class="img-thumbnail" src="{{ asset('img/' ~ product.image) }}" alt="{{ "image_produit" ~ product.id  }}">
+                <h3>{{ product.name }}</h3>
+                <p>{{ product.price | number_format(2,',',' ') }} €</p>
+                <p>
+                    <a href="{{ url('product.detail',{id:product.id}) }}" class="btn btn-info">Consulter</a>
+                </p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block aside %}
+    <h2>Produits</h2>
+    <hr>
+    <ul>
+        {% for product in products %}
+            <li><a href="{{ url('product.detail',{id:product.id}) }}">{{ product.name }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+{% block footer %}
+{% endblock %}
