@@ -1,0 +1,17 @@
+{% extends 'layout.html.twig' %}
+{% block title %}Admin Page{% endblock %}
+{% block nav %}{% include '_inc/nav.html.twig' %}{% endblock %}
+{% block main %}
+    <h1>Welcome!</h1>
+    <hr>
+    <div class="row">
+        <div class="col">
+            <h1>Administration</h1>
+            <p>
+                <a href="{{ url('admin.product.index') }}" class="btn btn-primary">Gérer les produits</a>
+            </p>
+        </div>
+    </div>
+{% endblock %}
+{% block aside %}
+{% endblock %}

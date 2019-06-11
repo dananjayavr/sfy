@@ -1,0 +1,37 @@
+{% extends 'layout.html.twig' %}
+{% block title %}Admin - All Products{% endblock %}
+{% block nav %}{% include '_inc/nav.html.twig' %}{% endblock %}
+{% block main %}
+    <div class="row">
+        <div class="col">
+            <h1>Administration</h1>
+            <h2>Gérer les produits</h2>
+            <hr>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col"># ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for product in products %}
+                    <tr>
+                        <th scope="row">{{ product.id }}</th>
+                        <td>{{ product.name }}</td>
+                        <td>{{ product.description }}</td>
+                        <td>{{ product.price | number_format(2,',',' ') }}€</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <p>
+                <a href="{{ url('admin.homepage.index') }}" class="btn btn-info">Retour à l'Admin</a>
+            </p>
+        </div>
+    </div>
+{% endblock %}
+{% block aside %}
+{% endblock %}
