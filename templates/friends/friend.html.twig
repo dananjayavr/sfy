@@ -1,6 +1,7 @@
 {% extends 'layout.html.twig' %}
+{% block title %}Our Friends - {{ friend.firstname ~ ' ' ~ friend.lastname }}{% endblock %}
 {% block main %}
-    <p>{{ friend.prenom}} {{ friend.nom }}</p>
+    <p>{{ friend.firstname}} {{ friend.lastname }}</p>
     <p>{{ friend.email }}</p>
     <img src="{{ friend.photo }}" alt="friend_profile">
     <br>

@@ -1,5 +1,5 @@
 {% extends 'layout.html.twig' %}
-{% block title %}Our Products - Tesla{% endblock %}
+{% block title %}Our Products - {{ product.name }}{% endblock %}
 {% block nav %}{% include '_inc/nav.html.twig' %}{% endblock %}
 {% block main %}
     <h2>Découvrir le {{ product.name }}</h2>
