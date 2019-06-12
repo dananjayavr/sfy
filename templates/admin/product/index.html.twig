@@ -6,13 +6,19 @@
         <div class="col">
             <h2>Gérer les produits</h2>
             <p class="text-right">
-                <a href="#" class="btn btn-primary">Ajouter un produit</a>
+                <a href="{{ url('admin.product.form') }}" class="btn btn-primary">Ajouter un produit</a>
             </p>
             <hr>
+            {# affichage du message flash #}
+            {% for message in app.flashes('notice') %}
+                <p class="alert alert-success">
+                    {{ message }}
+                </p>
+            {% endfor %}
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col"># ID</th>
+                        <th scope="col">#ID</th>
                         <th scope="col">Name</th>
                         <th scope="col">Image</th>
                         <th scope="col">Description</th>
@@ -30,7 +36,7 @@
                         </td>
                         <td>{{ product.description }}</td>
                         <td>{{ product.price | number_format(2,',',',') }}€</td>
-                        <td>
+                        <td class="w-50">
                             <a href="#" class="btn btn-warning">Modifier</a>
                             <a href="#" class="btn btn-danger">Supprimer</a>
                         </td>

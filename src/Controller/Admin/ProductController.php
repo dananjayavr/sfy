@@ -3,8 +3,13 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Product;
+use App\Form\ProductType;
 use App\Repository\ProductRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use http\Message;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -24,6 +29,48 @@ class ProductController extends AbstractController
         $products = $productRepository->findAll();
         return $this->render('admin/product/index.html.twig',[
             'products' => $products
+        ]);
+    }
+
+    /**
+     * @Route("/products/form",name="admin.product.form")
+     */
+    public function form(Request $request, EntityManagerInterface $entityManager):Response
+    {
+        // création du formulaire
+        $type = ProductType::class;  //on récupère juste le nom de la classe ici. ::class renvoie le namespace de la classe
+        $entity = new Product(); // création d'une instance de l'entité liée à la formulaire
+        $form = $this->createForm($type,$entity);
+
+        // récupération de la saisie dans $_POST
+        $form->handleRequest($request);
+
+        // si le formulaire est valide
+        if ($form->isSubmitted() && $form->isValid()) {
+            //dd($entity);
+
+            // persister la requête
+            $entityManager->persist($entity);
+
+            // exécution des requêtes
+            $entityManager->flush();
+
+            // message de confirmation
+            $notification = 'Le produit a été ajouté';
+
+            /*
+             * messages flash : informations stockées dans la session et détruits après leur lecture
+             * addFlash(clé,valeur) : créer une entrée dans la session
+             * $_SESSION['clé'] = valeur;
+             */
+            $this->addFlash('notice',$notification);
+
+            // redirectToRoute(nom de la route à afficher): redirection
+            return $this->redirectToRoute('admin.product.index');
+        }
+
+        return $this->render('admin/product/form.html.twig',[
+            'form' => $form->createView()
         ]);
     }
 }
