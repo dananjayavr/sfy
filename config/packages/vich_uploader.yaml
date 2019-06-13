@@ -1,0 +1,8 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        # nom d'un groupe des fichiers
+        products:
+            uri_prefix: /img
+            upload_destination: '%kernel.project_dir%/public/img'

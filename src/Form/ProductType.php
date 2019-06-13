@@ -12,6 +12,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Positive;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class ProductType extends AbstractType
 {
@@ -48,12 +49,16 @@ class ProductType extends AbstractType
                     ])
                 ]
             ])
-            ->add('image', TextType::class, [
+            ->add('imageFile', VichImageType::class, [
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Vous devez séléctionner un image du produit'
-                    ])
-                ]
+                    ]),
+                ],
+                'download_label' => 'Télécharger l\'image',
+                'download_uri' => false,
+                'delete_label' => 'Supprimer l\'image',
+                'allow_delete' => true
             ]);
     }
 

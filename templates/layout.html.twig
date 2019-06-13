@@ -13,10 +13,10 @@
     {% block nav %}{% endblock %}
     <div class="container">
         <div class="row">
-            <main class="col-sm-9">
+            <main class="col-sm-10">
                 {% block main %}{% endblock %}
             </main>
-            <aside class="col-sm-3">
+            <aside class="col-sm-2">
                 {% block aside %}{% endblock %}
             </aside>
         </div>
@@ -29,5 +29,6 @@
 
     <script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+    {% block javascripts %}{% endblock %}
 </body>
 </html>
