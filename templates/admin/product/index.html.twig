@@ -24,6 +24,7 @@
                 <thead>
                     <tr>
                         <th scope="col">#ID</th>
+                        <th scope="col">Category</th>
                         <th scope="col">Name</th>
                         <th scope="col">Image</th>
                         <th scope="col">Description</th>
@@ -35,6 +36,7 @@
                 {% for product in products %}
                     <tr>
                         <th scope="row">{{ product.id }}</th>
+                        <th scope="row">{{ product.category }}</th>
                         <td>{{ product.name }}</td>
                         <td class="w-25">
                             <img src="{{ asset('img/' ~ product.image) }}" alt="{{ product.name }}" class="img-fluid">

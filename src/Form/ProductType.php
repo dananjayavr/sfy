@@ -2,7 +2,9 @@
 
 namespace App\Form;
 
+use App\Entity\Category;
 use App\Entity\Product;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -46,6 +48,14 @@ class ProductType extends AbstractType
                     ]),
                     new Positive([
                         'message' => 'Le prix doit être supérieur à zéro'
+                    ])
+                ]
+            ])
+            ->add('category', EntityType::class,[
+                'class' => Category::class,
+                'constraints' => [
+                    new NotBlank([
+                        'message' => "Vous n'avez pas saisi la catégorie du produit"
                     ])
                 ]
             ])

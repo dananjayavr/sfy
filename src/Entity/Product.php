@@ -55,6 +55,12 @@ class Product
      */
     private $updatedAt;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="products")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $category;
+
 
     public function getId(): ?int
     {
@@ -123,6 +129,18 @@ class Product
     public function getImageFile(): ?File
     {
         return $this->imageFile;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
+
+        return $this;
     }
 
 }
