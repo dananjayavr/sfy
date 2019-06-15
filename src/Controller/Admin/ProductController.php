@@ -95,4 +95,5 @@ class ProductController extends AbstractController
         // redirection
         return $this->redirectToRoute('admin.product.index');
     }
+
 }

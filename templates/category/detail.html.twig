@@ -1,0 +1,25 @@
+{% extends 'layout.html.twig' %}
+{% block title %}Category - {{ category.name }}{% endblock %}
+{% block nav %}{% include '_inc/nav.html.twig' %}{% endblock %}
+{% block main %}
+    <h1>{{ category.name }}</h1>
+    <hr>
+    <div class="row">
+            <div class="col-sm-6">
+                <div class="card-group">
+                    {% for product in products %}
+                        <div class="card" style="width: 10rem;">
+                            <img src="{{ asset('img/') ~ product.image }}" class="card-img-top img-fluid" alt="{{ product.name }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ product.name }}</h5>
+                                <p class="card-text">{{ product.description }}</p>
+                                <a href="{{ url('product.detail',{'id':product.id}) }}" class="btn btn-primary">Plus d'Informations</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    <hr>
+    <a href="{{ url('category.index') }}">Retour à la liste des catégories</a>
+{% endblock %}
