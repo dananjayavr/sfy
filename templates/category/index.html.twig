@@ -2,6 +2,11 @@
 {% block title %}All Categories{% endblock %}
 {% block nav %}{% include '_inc/nav.html.twig' %}{% endblock %}
 {% block main %}
+    {% for message in app.flashes('notice') %}
+        <p class="alert alert-success">
+            {{ message }}
+        </p>
+    {% endfor %}
     <ul>
         {% for category in categories %}
             <li><a href="{{ url('category.detail',{'id':category.id}) }}">{{ category.name }}</a></li>

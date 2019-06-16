@@ -1,0 +1,56 @@
+{% extends 'layout.html.twig' %}
+{% block title %}Category - Form{% endblock %}
+{% block nav %}{% include '_inc/nav.html.twig' %}{% endblock %}
+
+{% block main %}
+    <div class="row">
+        <div class="col">
+            <h1>Administration</h1>
+            <h2>Ajouter/Modifier une catégorie</h2>
+            <hr>
+            {#
+                affichage du formulaire
+                form : est la clé envoyé par le controlleur
+                nécessaire de créer le bouton de sousmission
+                pour le ciblage des champs, se fier aux champs eixtants dans les métohdes 'add' de classe de formulaire (ProductType)
+
+                désactiver la validation html <form novalidate="novalidate" required="required">
+                clé attr : permet d'ajouter des attributs HTML
+            #}
+
+            {{ form_start(form,{attr: { novalidate : 'novalidate' } }) }}
+            <p>
+                {{ form_label(form.name, 'Nom de la catégorie: ') }}
+                {{ form_widget(form.name,{attr: {placeholder:'Saissisez le nom de la catégorie',autofocus:'autofocus'}}) }}
+            </p>
+
+            <p>
+                <button class="btn btn-primary">Valider</button>
+            </p>
+            {{ form_end(form) }}
+
+            {# affichage des erreurs #}
+            {#{{ form_errors(form.name) }}#}
+        </div>
+    </div>
+    <hr>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#ID</th>
+            <th scope="col">Nom</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for category in categories %}
+            <tr>
+                <th scope="row">{{ category.id }}</th>
+                <th scope="row">{{ category.name }}</th>
+                <td class="w-50">
+                    <a href="{{ url('admin.category.edit',{id:category.id}) }}" class="btn btn-warning">Modifier</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

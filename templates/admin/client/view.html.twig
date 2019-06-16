@@ -1,0 +1,8 @@
+{% extends 'layout.html.twig' %}
+{% block title %}Page Client - {{ client.name }}{% endblock %}
+{% block nav %}{% include '_inc/nav.html.twig' %}{% endblock %}
+{% block main %}
+    <h1>Bienvenue!</h1>
+    <hr>
+    <h2>{{ client.name }}</h2>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'layout.html.twig' %}
+{% block title %}Admin - All Clients{% endblock %}
+{% block nav %}{% include '_inc/nav.html.twig' %}{% endblock %}
+{% block main %}
+    <p></p>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#ID</th>
+            <th scope="col">Name</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for client in clients %}
+            <tr>
+                <td scope="row">{{ client.id }}</td>
+                <td scope="row">{{ client.name }}</td>
+                <td scope="row"><a class="btn btn-warning" href="#">Modifier</a></td>
+                <td scope="row"><a class="btn btn-danger" href="#">Supprimer</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <hr>
+    <a href="{{ url('admin.homepage.index') }}">Retour à l'admin</a>
+{% endblock %}

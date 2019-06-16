@@ -1,0 +1,24 @@
+{% extends 'layout.html.twig' %}
+{% block title %}All Transactions{% endblock %}
+{% block nav %}{% include '_inc/nav.html.twig' %}{% endblock %}
+{% block main %}
+    <p></p>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#ID</th>
+            <th scope="col">Client ID</th>
+            <th scope="col">Produit ID</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for achat in achats %}
+            <tr>
+                <td scope="row">{{ achat.id }}</td>
+                <td scope="row"><a href="{{ url('admin.client.view',{id:achat.clientid}) }}">{{ achat.clientid }}</a></td>
+                <td scope="row"><a href="{{ url('product.detail',{id:achat.productid}) }}">{{ achat.productid }}</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
