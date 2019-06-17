@@ -20,9 +20,15 @@ class ProductType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        //dd($options);
+        /*
+         * le paramètre option fournit des informations relatives au formulaire
+         * clé data fournit l'entité en cours de modification
+         * si l'identité possède un identifiant, pas de contrainte, sinon on met le contrainte NotBlank
+         */
         $builder
             ->add('name',TextType::class, [
-                'constraints' => [
+                'constraints' =>  [
                     new NotBlank([
                         'message' => "Vous n'avez pas saisi le nom du produit"
                     ]),
@@ -53,14 +59,18 @@ class ProductType extends AbstractType
             ])
             ->add('category', EntityType::class,[
                 'class' => Category::class,
+                'choice_label' => 'name',
                 'constraints' => [
                     new NotBlank([
                         'message' => "Vous n'avez pas saisi la catégorie du produit"
                     ])
-                ]
+                ],
+                'placeholder' => 'Choisir une catégorie',
+                'expanded' => false,
+                'multiple' => false
             ])
             ->add('imageFile', VichImageType::class, [
-                'constraints' => [
+                'constraints' => $options['data']->getId() ? [] : [
                     new NotBlank([
                         'message' => 'Vous devez séléctionner un image du produit'
                     ]),

@@ -3,6 +3,12 @@
 {% block main %}
     <p>{{ friend.firstname}} {{ friend.lastname }}</p>
     <p>{{ friend.email }}</p>
+    <p>Hobbies: </p>
+    <ul>
+        {% for hobby in hobbies %}
+            <li>{{ hobby.name }}</li>
+        {% endfor %}
+    </ul>
     <img src="{{ friend.photo }}" alt="friend_profile">
     <br>
     <a href="{{ url('friends.index') }}">Retour</a>

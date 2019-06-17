@@ -36,7 +36,7 @@
                 {% for product in products %}
                     <tr>
                         <th scope="row">{{ product.id }}</th>
-                        <th scope="row">{{ product.category }}</th>
+                        <th scope="row">{{ product.category.name }}</th>
                         <td>{{ product.name }}</td>
                         <td class="w-25">
                             <img src="{{ asset('img/' ~ product.image) }}" alt="{{ product.name }}" class="img-fluid">

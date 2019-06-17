@@ -32,11 +32,11 @@
                 {{ form_widget(form.price,{attr: {placeholder:'Saissisez le prix du produit'}}) }}
             </p>
             <p>
-                {{ form_label(form.price,'Catégorie : ') }}
+                {{ form_label(form.category,'Catégorie : ') }}
                 {{ form_widget(form.category,{attr: {placeholder:'Saissisez la catégorie'}}) }}
             </p>
-            <p>
-                {{ form_label(form.imageFile,'Image: ') }}
+            <p class="custom-file">
+                {{ form_label(form.imageFile,'Image: ',{attr: {class: 'custom-file-label'}}) }}
                 {{ form_widget(form.imageFile) }}
             </p>
             <p>
