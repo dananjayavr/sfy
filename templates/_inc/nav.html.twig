@@ -37,12 +37,19 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ url('admin.homepage.index') }}">Administration<span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('registration.register') }}">S'inscrire<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('security.login') }}">Se Connecter<span class="sr-only">(current)</span></a>
-            </li>
+            {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('registration.register') }}">S'inscrire<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('security.login') }}">Se Connecter<span class="sr-only">(current)</span></a>
+                </li>
+            {% endif %}
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ logout_url() }}">Se Déconnecter<span class="sr-only">(current)</span></a>
+                </li>
+            {% endif %}
         </ul>
         {#<form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
