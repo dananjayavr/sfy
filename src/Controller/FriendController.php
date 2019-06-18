@@ -30,10 +30,11 @@ class FriendController extends AbstractController
     public function detail(int $id, FriendRepository $friendRepository, HobbyRepository $hobbyRepository):Response
     {
         $friend = $friendRepository->find($id);
-        $hobbies = $friend->getLoisir()->getValues();
+        #$hobbies = $friend->getLoisir()->getValues();
+
         return $this->render('friends/friend.html.twig',[
             'friend' => $friend,
-            'hobbies' => $hobbies
+            //'hobbies' => $hobbies
         ]);
     }
 }

@@ -3,14 +3,15 @@
 {% block main %}
     <p>{{ friend.firstname}} {{ friend.lastname }}</p>
     <p>{{ friend.email }}</p>
-    {% if hobbies %}
+    {% if friend.loisir is not empty %}
     <p style="text-decoration: underline">Hobbies: </p>
     <ul>
-        {% for hobby in hobbies %}
+        {% for hobby in friend.loisir %}
             <li>{{ hobby.name }}</li>
         {% endfor %}
     </ul>
     {% endif %}
+
     <img src="{{ friend.photo }}" alt="friend_profile">
     <br>
     <a href="{{ url('friends.index') }}">Retour</a>

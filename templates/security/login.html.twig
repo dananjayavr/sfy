@@ -1,0 +1,41 @@
+{% extends 'layout.html.twig' %}
+{% block title %}Login Form{% endblock %}
+{% block nav %}{% include '_inc/nav.html.twig' %}{% endblock %}
+
+{% block main %}
+    <div class="row">
+        <div class="col">
+            <h2>Se connecter</h2>
+
+            {# affichage du message Flash #}
+            {% for message in app.flashes('notice') %}
+                <p class="alert alert-success">
+                    {{ message }}
+                </p>
+            {% endfor %}
+
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            <form method="post">
+                <p>
+                    <label for="inputEmail">Email : </label>
+                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
+                </p>
+                <p>
+                    <label for="inputPassword">Mot de passe : </label>
+                    <input type="password" name="password" id="inputPassword" class="form-control" required>
+                </p>
+
+                <input type="hidden" name="_csrf_token"
+                       value="{{ csrf_token('authenticate') }}"
+                >
+
+                <button class="btn btn-primary" type="submit">
+                    Se connecter
+                </button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
