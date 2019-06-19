@@ -19,6 +19,8 @@
     #}
     <a href="{{ url('product.index') }}">Our Products</a>
     <a href="{{ url('friends.index') }}">Our Friends</a>
-    <a href="{{ url('admin.homepage.index') }}">Espace d'Administration</a>
+    {% if is_granted("ROLE_ADMIN") %}
+        <a href="{{ url('admin.homepage.index') }}">Espace d'Administration</a>
+    {% endif %}
     <p>L'hôte est {{ myHost }}</p>
 {% endblock %}

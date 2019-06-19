@@ -1,0 +1,15 @@
+{% extends 'layout.html.twig' %}
+{% block title %}Error - {{ status_code }}{% endblock %}
+{% block main %}
+<h1>Erreur!</h1>
+    <div class="row">
+        <div class="col">
+            <h2 class="text-danger">Un problème est survenu</h2>
+            <p>
+                <a href="{{ url('homepage.index') }}">Retour vers l'acceuil</a>
+            </p>
+        </div>
+    </div>
+{#{{ status_code }}
+{{ status_text }}#}
+{% endblock %}
