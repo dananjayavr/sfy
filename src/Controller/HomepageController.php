@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
-use http\Env\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class HomepageController extends AbstractController
@@ -20,7 +20,7 @@ class HomepageController extends AbstractController
     /**
      * @Route("/",name="homepage.index")
      */
-    public function index(Request $request):\Symfony\Component\HttpFoundation\Response
+    public function index(Request $request):Response
     {
         // appel d'une page twig
         //return new \Symfony\Component\HttpFoundation\Response('<h1>Hello, World!</h1>');
@@ -51,7 +51,8 @@ class HomepageController extends AbstractController
          */
 
         $host = $request->headers->get('host');
-        return $this->render('homepage/index.html.twig',[
+
+       return $this->render('homepage/index.html.twig',[
            'myHost' => $host,
         ]);
     }
